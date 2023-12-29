@@ -46,7 +46,7 @@ class _LayoutDesignState extends State<LayoutDesign> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 0),
+                        padding: const EdgeInsets.only(bottom: 30),
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
@@ -59,24 +59,86 @@ class _LayoutDesignState extends State<LayoutDesign> {
                     ],
                   ),
                 ),
-                // SizedBox(
-                //   height: 200,
-                //   child: ListView.builder(
-                //       // shrinkWrap: true,
-                //       scrollDirection: Axis.horizontal,
-                //       // physics: NeverScrollableScrollPhysics(),
-                //       itemCount: 6,
-                //       itemBuilder: (context, index) {
-                //         return Padding(
-                //           padding: const EdgeInsets.all(8.0),
-                //           child: Container(
-                //             height: 100,
-                //             width: 100,
-                //             color: Colors.black,
-                //           ),
-                //         );
-                //       }),
-                // ),
+                MaterialButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        barrierColor: Colors.amber,
+                        builder: (context) {
+                          return Dialog(
+                            child: Container(
+                              height: 300,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                          );
+                        });
+                  },
+                  child: Text("Pop Up"),
+                ),
+                MaterialButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            height: MediaQuery.of(context).size.height / 2,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20)),
+                          );
+                        });
+                  },
+                  child: Text("Bottom Sheet"),
+                ),
+                SizedBox(
+                  height: 400,
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 1,
+                          // mainAxisExtent: 150,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          crossAxisCount: 2),
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 100,
+                            width: 100,
+                            color: Colors.black,
+                          ),
+                        );
+                      }),
+
+                  // GridView.count(
+                  //     crossAxisCount: 2,
+                  //     children: [
+                  //       1,
+                  //       2,
+                  //       3,
+                  //       4,
+                  //       5,
+                  //       6,
+                  //       7,
+                  //       8,
+                  //     ].map((item) {
+                  //       return Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Container(
+                  //           color: Colors.red,
+                  //           child: Center(child: Text(item.toString())),
+                  //         ),
+                  //       );
+                  //     }).toList())
+                ),
               ],
             ),
           ),

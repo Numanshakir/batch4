@@ -2,14 +2,15 @@ import 'package:batch4/WeatherApp/Common/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class ForcastData extends StatelessWidget {
-  const ForcastData({super.key});
+  ScrollPhysics ?scrollPhysics;
+   ForcastData({super.key,this.scrollPhysics});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: scrollPhysics,
         shrinkWrap: true,
-        itemCount: 5,
+        itemCount: 20,
         itemBuilder: (context, index) {
           return Padding(
               padding: const EdgeInsets.all(8.0), child: ForcastDataTile());

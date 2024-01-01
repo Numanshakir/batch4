@@ -1,5 +1,6 @@
 import 'package:batch4/WeatherApp/Home/View/home_view.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';
+import 'package:batch4/WeatherApp/Search/View/seearch_view.dart';
 import 'package:batch4/WeatherApp/Splash/View/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,10 @@ class AppRoutes {
       case RouteNames.homeView:
         {
           return MaterialPageRoute(builder: (context) => HomeView());
+        }
+      case RouteNames.searchView:
+        {
+          return MaterialPageRoute(builder: (context) => SearchView());
         }
 
       default:

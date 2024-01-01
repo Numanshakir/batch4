@@ -1,6 +1,7 @@
 import 'package:batch4/WeatherApp/Common/custom_text.dart';
 import 'package:batch4/WeatherApp/Home/View/Components/forcast_data.dart';
 import 'package:batch4/WeatherApp/Home/View/Components/today_weather_info.dart';
+import 'package:batch4/WeatherApp/Routes/route_names.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,7 +12,11 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteNames.searchView);
+                },
+                icon: Icon(Icons.search)),
           ],
           title: CustomText(
             title: "Today",
@@ -111,7 +116,9 @@ class HomeView extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  ForcastData()
+                  ForcastData(
+                    scrollPhysics: NeverScrollableScrollPhysics(),
+                  )
                 ],
               ),
             ),

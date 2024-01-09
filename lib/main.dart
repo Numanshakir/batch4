@@ -124,6 +124,7 @@
 //   }
 // }
 
+import 'package:batch4/AlbumApp/albums_view.dart';
 import 'package:batch4/App/Splash/View/layout_design.dart';
 import 'package:batch4/App/Splash/View/splash_screen.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';
@@ -141,8 +142,18 @@ class MyApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: "Batch 4",
-      initialRoute: RouteNames.splashView,
-      onGenerateRoute: AppRoutes.genrateRoutes,
+      home: AlbumsView(),
+      // initialRoute: RouteNames.splashView,
+      // onGenerateRoute: AppRoutes.genrateRoutes,
     );
   }
 }
+
+/////APIS Request
+///CRUD
+///GET
+///POST
+///PUT
+///PATCH
+///DELETE
+///

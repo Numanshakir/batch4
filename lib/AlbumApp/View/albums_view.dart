@@ -1,5 +1,5 @@
-import 'package:batch4/AlbumApp/album_service.dart';
-import 'package:batch4/AlbumApp/album_view_model.dart';
+import 'package:batch4/AlbumApp/Service/album_service.dart';
+import 'package:batch4/AlbumApp/ViewModel/album_view_model.dart';
 import 'package:batch4/WeatherApp/Common/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -25,9 +25,9 @@ class _AlbumsViewState extends State<AlbumsView> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          // AlbumService albumService = AlbumService();
-          // await albumService.postAlbumService(
-          //     email: "numanshakir007@gmail.com", password: "12345678");
+          AlbumService albumService = AlbumService();
+          await albumService.postAlbumService(
+              email: "numanshakir007@gmail.com", password: "12345678");
 
           // await albumService.getAlbumsService();
         },

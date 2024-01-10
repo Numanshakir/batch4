@@ -1,5 +1,5 @@
-import 'package:batch4/AlbumApp/album_model.dart';
-import 'package:batch4/AlbumApp/album_service.dart';
+import 'package:batch4/AlbumApp/Model/album_model.dart';
+import 'package:batch4/AlbumApp/Service/album_service.dart';
 import 'package:get/get.dart';
 
 class AlbumViewModel extends GetxController {

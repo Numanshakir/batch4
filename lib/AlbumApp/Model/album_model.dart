@@ -17,7 +17,15 @@ class Album {
     );
   }
 
+  static List<Album> toListData(List<dynamic> json) {
+    List<Album> data = [];
+    for (int index = 0; index < json.length; index++) {
+      data.add(Album.fromJson(json[index]));
+    }
+    return data;
+  }
   static List<Album> jsonToModelList(List<dynamic> json) {
     return json.map((e) => Album.fromJson(e)).toList();
   }
+
 }

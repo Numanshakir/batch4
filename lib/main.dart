@@ -124,7 +124,7 @@
 //   }
 // }
 
-import 'package:batch4/AlbumApp/albums_view.dart';
+import 'package:batch4/AlbumApp/View/albums_view.dart';
 import 'package:batch4/App/Splash/View/layout_design.dart';
 import 'package:batch4/App/Splash/View/splash_screen.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';

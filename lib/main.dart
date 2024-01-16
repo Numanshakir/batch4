@@ -127,6 +127,7 @@
 import 'package:batch4/AlbumApp/View/albums_view.dart';
 import 'package:batch4/App/Splash/View/layout_design.dart';
 import 'package:batch4/App/Splash/View/splash_screen.dart';
+import 'package:batch4/WeatherApp/Home/View/home_view.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';
 import 'package:batch4/WeatherApp/Routes/routes.dart';
 import 'package:batch4/WeatherApp/Splash/View/splash_view.dart';
@@ -142,7 +143,7 @@ class MyApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: "Batch 4",
-      home: AlbumsView(),
+      home: HomeView(),
       // initialRoute: RouteNames.splashView,
       // onGenerateRoute: AppRoutes.genrateRoutes,
     );

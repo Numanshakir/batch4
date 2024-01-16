@@ -1,11 +1,26 @@
 import 'package:batch4/WeatherApp/Common/custom_text.dart';
 import 'package:batch4/WeatherApp/Home/View/Components/forcast_data.dart';
 import 'package:batch4/WeatherApp/Home/View/Components/today_weather_info.dart';
+import 'package:batch4/WeatherApp/Home/ViewModel/home_view_model.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeView extends StatefulWidget {
+  HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  HomeViewModel homeVM = HomeViewModel();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    homeVM.fetchCurrentLocation();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +49,12 @@ class HomeView extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      CustomText(
-                        title: "punjab, pakistan",
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+                      Obx(
+                        () => CustomText(
+                          title: homeVM.myAddress.value,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ],
                   ),

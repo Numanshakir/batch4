@@ -5,6 +5,7 @@ import 'package:batch4/WeatherApp/Home/ViewModel/home_view_model.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:intl/intl.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({super.key});
@@ -61,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                   Row(
                     children: [
                       CustomText(
-                        title: "Monday, Jan 01 2024",
+                        title: DateFormat.yMMMEd().format(DateTime.now()),
                         fontSize: 16,
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
@@ -77,10 +78,13 @@ class _HomeViewState extends State<HomeView> {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomText(
-                            title: "23",
-                            fontSize: 80,
-                            fontWeight: FontWeight.bold,
+                          Obx(
+                            () => CustomText(
+                              title:
+                                  homeVM.todayData.value.main.temp.toString(),
+                              fontSize: 80,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           CustomText(
                             title: "o",
@@ -100,18 +104,21 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                      ),
-                      CustomText(
-                        title: "Clear Sky",
-                        fontSize: 16,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ],
+                  Obx(
+                    () => Row(
+                      children: [
+                        SizedBox(
+                          width: 60,
+                        ),
+                        
+                        CustomText(
+                          title: "Clear Sky",
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 30,

@@ -44,6 +44,34 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text("Sign in with google"),
             ),
+            MaterialButton(
+              color: Colors.amber,
+              onPressed: () {
+                firebaseService.getAllusers();
+              },
+              child: Text("Get All users"),
+            ),
+            MaterialButton(
+              color: Colors.amber,
+              onPressed: () {
+                firebaseService.getMyInfo();
+              },
+              child: Text("Get My info"),
+            ),
+            MaterialButton(
+              color: Colors.amber,
+              onPressed: () {
+                firebaseService.deleteMyInfo();
+              },
+              child: Text("Delete My info"),
+            ),
+            MaterialButton(
+              color: Colors.amber,
+              onPressed: () {
+                firebaseService.updateMyInfo();
+              },
+              child: Text("Update My info"),
+            ),
           ],
         ),
       ),

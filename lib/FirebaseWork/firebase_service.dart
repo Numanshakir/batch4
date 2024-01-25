@@ -147,4 +147,19 @@ class FirebaseService {
           .update(data);
     }
   }
+
+  socketIOConnection() async {
+    Stream<QuerySnapshot<Map<String, dynamic>>> stream =
+        await FirebaseFirestore.instance.collection("users").snapshots();
+
+    stream.listen((event) {
+      print("event");
+      for (int index = 0; index < event.docChanges.length; index++) {
+        print(event.docChanges[index].type);
+        print(event.docChanges[index].doc.data());
+      }
+    });
+  }
+
+  
 }

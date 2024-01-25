@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:batch4/FirebaseWork/firebase_service.dart';
+import 'package:batch4/FirebaseWork/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -12,6 +16,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   FirebaseService firebaseService = FirebaseService();
+
+  String imagePath = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            if (imagePath.isNotEmpty)
+              Image(height: 100, image: FileImage(File(imagePath))),
             MaterialButton(
               color: Colors.amber,
               onPressed: () {
@@ -72,9 +81,35 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text("Update My info"),
             ),
+            MaterialButton(
+              color: Colors.amber,
+              onPressed: () {
+                firebaseService.socketIOConnection();
+              },
+              child: Text("Socket"),
+            ),
+            MaterialButton(
+              color: Colors.amber,
+              onPressed: () {
+                uploadFile();
+              },
+              child: Text("Upload Image"),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  uploadFile() async {
+    XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      print(file.path);
+      setState(() {
+        imagePath = file.path;
+      });
+
+      FirebaseStorageService().uploadToStorage(imagePath);
+    }
   }
 }

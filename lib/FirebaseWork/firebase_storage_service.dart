@@ -7,9 +7,10 @@ class FirebaseStorageService {
 
   uploadToStorage(String path) {
     print("uploadToStorage");
+
+    String fileName = path.split("/").last;
     //Create a reference to the location you want to upload to in firebase
-    Reference reference =
-        storage.ref().child("/Images/${DateTime.now().millisecondsSinceEpoch}");
+    Reference reference = storage.ref().child("/Images/${fileName}");
 
     UploadTask uploadTask = reference.putFile(File(path));
 

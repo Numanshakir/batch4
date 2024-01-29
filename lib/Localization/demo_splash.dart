@@ -1,36 +1,45 @@
+import 'package:batch4/Localization/demo_view.dart';
 import 'package:batch4/WeatherApp/Home/View/home_view.dart';
 import 'package:batch4/WeatherApp/Routes/route_names.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SplashView extends StatefulWidget {
-  const SplashView({super.key});
+class DemoSplashView extends StatefulWidget {
+  const DemoSplashView({super.key});
 
   @override
-  State<SplashView> createState() => _SplashViewState();
+  State<DemoSplashView> createState() => _DemoSplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _DemoSplashViewState extends State<DemoSplashView> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    checkCurrentLanguage();
     Future.delayed(Duration(seconds: 3), () {
       // Navigator.pushAndRemoveUntil(
       //     context,
       //     MaterialPageRoute(builder: (context) => HomeView()),
       //     (Route<dynamic> route) => false);
 
-      Navigator.pushNamedAndRemoveUntil(
-          context, RouteNames.homeView, (route) => false);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DemoView()));
     });
   }
 
-  checkCurrenLanguage(){
-
-
-
-
-    
+  checkCurrentLanguage() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? lang = prefs.getString("locale");
+    print("lang ${lang}");
+    if (lang != null) {
+      if (lang == "ar") {
+        Get.updateLocale(Locale("ar", "AE"));
+      } else {
+        Get.updateLocale(Locale("en", "US"));
+      }
+    }
   }
 
   @override

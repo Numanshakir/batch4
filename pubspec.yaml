@@ -40,13 +40,16 @@ dependencies:
   geolocator: ^10.1.0
   latlong2: ^0.9.0
   geocoding: ^2.1.1
-  intl: ^0.19.0
+  intl:
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
   google_sign_in: 
   cloud_firestore: ^4.14.0
   firebase_storage: ^11.6.0
   image_picker: ^1.0.7
+  flutter_localization: 
+  shared_preferences: ^2.2.2
+  
 
 
 

@@ -8,6 +8,7 @@
     <application
         android:label="batch4"
         android:name="${applicationName}"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -35,5 +36,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+     <meta-data
+    android:name="com.google.firebase.messaging.default_notification_channel_id"
+    android:value="@string/default_notification_channel_id"/>
     </application>
 </manifest>
